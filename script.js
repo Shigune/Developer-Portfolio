@@ -11,11 +11,12 @@ menuIcon.onclick = () => {
 
 document.addEventListener("DOMContentLoaded", () => {
     // Inicializa EmailJS con tu userID
-    emailjs.init("ckB2zUyYV0LASKK-R"); // Reemplaza con tu User ID de EmailJS
+    emailjs.init("KlakqrcNKQItP2QyL"); // Reemplaza con tu User ID de EmailJS
 
     const form = document.getElementById("contact-form");
     const status = document.getElementById("form-status");
 
+    // Evento para manejar el envío del formulario
     form.addEventListener("submit", (e) => {
         e.preventDefault();
 
@@ -25,8 +26,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Parámetros para enviar
         const params = {
-            user_email: email,
-            user_message: message,
+            from_name: email, // Aquí el correo lo pasas como "from_name"
+            message: message, // Mensaje que se envía
         };
 
         // Enviar correo usando EmailJS
@@ -41,7 +42,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 status.style.display = "block";
                 status.textContent = "Failed to send email. Please try again.";
                 status.style.color = "red";
-                console.error("Error:", error);
+                console.error("EmailJS Error Details:", error);
             });
     });
 });
