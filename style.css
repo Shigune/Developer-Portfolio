@@ -352,6 +352,7 @@ footer ul li a{
     box-sizing: border-box; 
     height: auto; 
     min-height: 6rem; 
+    margin-top: 1rem;
 }
 #user_message::placeholder {
     font-size: 3rem;
@@ -378,7 +379,7 @@ footer ul li a{
         font-size: 2.5rem;
     }
     .input-box i{
-        font-size: 2.5rem;
+        display: none;
     }
 }
 @media(max-width:768px){
@@ -415,6 +416,17 @@ footer ul li a{
         width: 70vw;
         height: 70vw;
         border-radius: 50%;
+    }
+    #user_message::placeholder{
+        font-size: 1.5rem;
+        text-align: left;
+        justify-content: left;
+        transform: translate(10%,50%);
+        font-size: 1.5rem;
+    }
+    #user_message{
+        margin-top: 1rem;
+        font-size: 1.5rem;
     }
 }
 @media(max-width:600px){
@@ -481,4 +493,15 @@ footer ul li a{
         height: 60vw;
         border-radius: 50%;
     }
-}
+    #user_message{
+        padding: 0.5rem 2rem;
+        width: 89%;
+        margin-top: 1rem;
+        font-size: 1.5rem;
+    }
+    #user_message::placeholder{
+        font-size: 1.5rem;
+        font-style: italic;
+        transform: translate(10%,100%)
+        }
+    }
