@@ -6,7 +6,8 @@
     <title>Portfolio website</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
-
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    
 </head>
 <body>
     
@@ -149,10 +150,11 @@
                     <i class="fa-solid fa-envelope"></i>
                 </div>
                 <div class="input">
-                    <textarea id="user_message" placeholder="Write your message" draggable="false"></textarea>
+                    <textarea id="user_message" placeholder="Write your message" draggable="false" required></textarea>
                 </div>
                 <button type="submit" class="btn">Submit</button>
             </form>
+            <p id="form-status" style="display: none;"></p>
         </div>
     </section>
     
