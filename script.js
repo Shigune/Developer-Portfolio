@@ -20,18 +20,21 @@ document.addEventListener("DOMContentLoaded", () => {
     form.addEventListener("submit", (e) => {
         e.preventDefault();
 
+        if (form.classList.contains("submitting")) return;
+        form.classList.add("submitting");
+
         // Recolectar datos del formulario
         const email = document.getElementById("user_email").value;
         const message = document.getElementById("user_message").value;
 
         // Parámetros para enviar
         const params = {
-            from_name: email, // Aquí el correo lo pasas como "from_name"
-            message: message, // Mensaje que se envía
+            user_email: email, // Aquí recoges la dirección de correo electrónico
+            message: message  // Aquí recoges el mensaje
         };
 
         // Enviar correo usando EmailJS
-        emailjs.send("service_5xj7n1b", "template_xlh9pjk", params)
+        emailjs.send("contact_service", "contact_form", params)
             .then(() => {
                 status.style.display = "block";
                 status.textContent = "Email sent successfully!";
