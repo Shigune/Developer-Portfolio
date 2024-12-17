@@ -6,34 +6,42 @@ menuIcon.onclick = () => {
     navLinks.classList.toggle('active');
 };
 
-// Inicializar EmailJS
-(function () {
-    emailjs.init("ckB2zUyYV0LASKK-R"); // Asegúrate de que este sea tu User ID en EmailJS
-})();
+// Agrega el SDK de EmailJS en el head de tu HTML
+// <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
 
-// Manejo del formulario
-document.getElementById('contact-form').addEventListener('submit', function (e) {
-    e.preventDefault();
+document.addEventListener("DOMContentLoaded", () => {
+    // Inicializa EmailJS con tu userID
+    emailjs.init("ckB2zUyYV0LASKK-R"); // Reemplaza con tu User ID de EmailJS
 
-    // Obtener valores del formulario
-    const email = document.getElementById('user_email').value.trim();
-    const message = document.getElementById('user_message').value.trim();
+    const form = document.getElementById("contact-form");
+    const status = document.getElementById("form-status");
 
-    // Validar campos vacíos
-    if (!email || !message) {
-        alert("Please fill in all fields before submitting.");
-        return; // Detiene el proceso si hay campos vacíos
-    }
+    form.addEventListener("submit", (e) => {
+        e.preventDefault();
 
-    // Enviar el correo usando EmailJS
-    emailjs.send("service_5xj7n1b", "template_xlh9pjk", {
-        user_email: email, // Variable que asocia al template
-        user_message: message, // Variable que asocia al template
-    })
-        .then(function () {
-            alert("Email sent successfully.");
-            document.getElementById('contact-form').reset(); // Reinicia el formulario
-        }, function (error) {
-            alert("Error trying to send the email: " + JSON.stringify(error)); // Muestra error
-        });
+        // Recolectar datos del formulario
+        const email = document.getElementById("user_email").value;
+        const message = document.getElementById("user_message").value;
+
+        // Parámetros para enviar
+        const params = {
+            user_email: email,
+            user_message: message,
+        };
+
+        // Enviar correo usando EmailJS
+        emailjs.send("service_5xj7n1b", "template_xlh9pjk", params)
+            .then(() => {
+                status.style.display = "block";
+                status.textContent = "Email sent successfully!";
+                status.style.color = "green";
+                form.reset();
+            })
+            .catch((error) => {
+                status.style.display = "block";
+                status.textContent = "Failed to send email. Please try again.";
+                status.style.color = "red";
+                console.error("Error:", error);
+            });
+    });
 });
