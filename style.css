@@ -154,13 +154,13 @@ section {
     font-weight: 500;
     text-wrap: nowrap;
     transition: background-color 0.2s ease-in-out, color 0.2s;
+    color: black;
+    
 }
-
 .btn:hover {
     background-color: black;
     color: white;
 }
-
 .socials {
     display: flex;
     gap: 2rem;
@@ -357,6 +357,13 @@ footer ul li a{
 #user_message::placeholder {
     font-size: 3rem;
     color: gray;
+}
+#form-status {
+    margin-top: 10px;
+    font-size: 14px;
+}
+.hidden {
+    display: none;
 }
 
 
